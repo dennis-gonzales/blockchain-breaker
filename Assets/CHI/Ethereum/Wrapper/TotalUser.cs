@@ -7,7 +7,7 @@ namespace Ethereum.Wrapper
     public static class TotalUser
     {
 
-        [Function("totalUsers", "uint256")]
+        [Function("totalUsers", typeof(GetTotalUsersOutputDTO))]
         public class GetTotalUsersFunction : FunctionMessage
         {
 

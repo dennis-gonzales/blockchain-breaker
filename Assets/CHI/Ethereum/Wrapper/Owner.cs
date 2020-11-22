@@ -5,7 +5,7 @@ namespace Ethereum.Wrapper
 {
     public static class Owner
     {
-        [Function("owner", "address")]
+        [Function("owner", typeof(GetOwnerOutputDTO))]
         public class GetOwnerFunction : FunctionMessage
         {
 
