@@ -3,25 +3,21 @@ using Nethereum.Contracts;
 
 namespace Ethereum.Wrapper
 {
-    public static class Owner
+    [Function("owner", typeof(GetOwnerOutputDTO))]
+    public class GetOwnerFunction : FunctionMessage
     {
-        [Function("owner", typeof(GetOwnerOutputDTO))]
-        public class GetOwnerFunction : FunctionMessage
-        {
 
-        }
-
-        [FunctionOutput]
-        public class GetOwnerOutputDTO : IFunctionOutputDTO
-        {
-            [Parameter("address", "owner")]
-            public string Owner { get; set; }
-
-            public override string ToString()
-            {
-                return $"Owner: {Owner}";
-            }
-        }
     }
 
+    [FunctionOutput]
+    public class GetOwnerOutputDTO : IFunctionOutputDTO
+    {
+        [Parameter("address", "owner")]
+        public string Owner { get; set; }
+
+        public override string ToString()
+        {
+            return $"Owner: {Owner}";
+        }
+    }
 }

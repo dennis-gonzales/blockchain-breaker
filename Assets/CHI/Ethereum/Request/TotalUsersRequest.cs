@@ -1,8 +1,8 @@
 ﻿using Ethereum;
-using Nethereum.Web3;
-using UnityEngine;
-using Nethereum.Web3.Accounts;
 using Ethereum.Wrapper;
+using Nethereum.Web3;
+using Nethereum.Web3.Accounts;
+using UnityEngine;
 
 namespace Blockchain.Request
 {
@@ -21,12 +21,9 @@ namespace Blockchain.Request
             var web3 = new Web3(account, Environment.InfuraKey);
             var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
 
-            var totalUsersOutput = await contractHandler.QueryDeserializingToObjectAsync
-            <TotalUser.GetTotalUsersFunction, TotalUser.GetTotalUsersOutputDTO>
-            (
-                new TotalUser.GetTotalUsersFunction()
+            var totalUsersOutput = await contractHandler.QueryDeserializingToObjectAsync<GetTotalUsersFunction, GetTotalUsersOutputDTO>(
+                new GetTotalUsersFunction()
             );
-
 
             Debug.Log(totalUsersOutput);
         }

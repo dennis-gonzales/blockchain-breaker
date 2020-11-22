@@ -1,8 +1,9 @@
 ﻿using Ethereum;
-using Nethereum.Web3;
-using UnityEngine;
-using Nethereum.Web3.Accounts;
 using Ethereum.Wrapper;
+using Nethereum.Web3;
+using Nethereum.Web3.Accounts;
+using Nethereum.Util;
+using UnityEngine;
 
 namespace Blockchain.Request
 {
@@ -20,14 +21,12 @@ namespace Blockchain.Request
             var web3 = new Web3(account, Environment.InfuraKey);
             var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
 
-            var ownerOutput = await contractHandler.QueryDeserializingToObjectAsync
-            <Owner.GetOwnerFunction, Owner.GetOwnerOutputDTO>
-            (
-                new Owner.GetOwnerFunction()
+            var ownerOutput = await contractHandler.QueryDeserializingToObjectAsync<GetOwnerFunction, GetOwnerOutputDTO>(
+                new GetOwnerFunction()
             );
 
-
             Debug.Log(ownerOutput);
+            Debug.Log($"is Valid: {ownerOutput.Owner.IsValidEthereumAddressHexFormat()}");
         }
     }
 }
