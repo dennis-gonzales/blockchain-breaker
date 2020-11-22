@@ -25,6 +25,7 @@ namespace Blockchain.Request
             );
 
             Debug.Log(playerDataOutput);
+            Debug.Log(playerDataOutput.Name);
             Debug.Log(playerDataOutput.HighScore);
             Debug.Log(playerDataOutput.CurrentLevel);
             Debug.Log(playerDataOutput.LevelsCleared);

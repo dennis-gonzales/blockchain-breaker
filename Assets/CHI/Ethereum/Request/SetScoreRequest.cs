@@ -27,13 +27,23 @@ namespace Blockchain.Request
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
                     new SetScoreFunction()
                     {
-                        NewScore = BigInteger.Parse("0")
+                        NewScore = BigInteger.Parse("100")
                     }
                 );
 
+                if (receipt.Logs.HasValues)
+                {
+                    var highScoreAchievedEvent = contractHandler.GetEvent<HighScoreAchievedEventDTO>();
+                    var eventOutputs = highScoreAchievedEvent.DecodeAllEventsForEvent(receipt.Logs);
+                    var playerHighScore = eventOutputs[0].Event.NewHighScore;
+                    var playerAddress = eventOutputs[0].Event.Player;
+
+                    Debug.Log(playerHighScore);
+                    Debug.Log(playerAddress);
+                }
+
                 Debug.Log(receipt.Logs);
-                Debug.Log(receipt.Status);
-                Debug.Log(receipt.TransactionHash);
+                
 
                 if (receipt.TransactionHash.IsNotAnEmptyAddress()) {
                     Debug.Log("Successful");
