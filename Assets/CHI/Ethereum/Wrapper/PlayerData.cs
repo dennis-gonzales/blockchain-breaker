@@ -16,19 +16,19 @@ namespace Ethereum.Wrapper
         [FunctionOutput]
         public class GetPlayerDataOutputDTO : IFunctionOutputDTO
         {
-            [Parameter("bool", "isActive", 1)]
+            [Parameter("bool", 1)]
             public bool IsActive { get; set; }
 
 
-            [Parameter("uint256", "highscore", 2)]
+            [Parameter("uint256", 2)]
             public BigInteger HighScore { get; set; }
 
 
-            [Parameter("uint256", "levelsCleared", 3)]
+            [Parameter("uint256", 3)]
             public BigInteger LevelsCleared { get; set; }
 
 
-            [Parameter("uint256", "currentLevel", 4)]
+            [Parameter("uint256", 4)]
             public BigInteger CurrentLevel { get; set; }
             
 

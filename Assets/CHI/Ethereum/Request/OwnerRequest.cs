@@ -20,11 +20,10 @@ namespace Blockchain.Request
             var web3 = new Web3(account, Environment.InfuraKey);
             var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
 
-            var ownerHandler = web3.Eth.GetContractQueryHandler<Owner.GetOwnerFunction>();
-            var ownerOutput = await ownerHandler.QueryDeserializingToObjectAsync<Owner.GetOwnerOutputDTO>
+            var ownerOutput = await contractHandler.QueryDeserializingToObjectAsync
+            <Owner.GetOwnerFunction, Owner.GetOwnerOutputDTO>
             (
-                new Owner.GetOwnerFunction(),
-                Environment.contractAddress
+                new Owner.GetOwnerFunction()
             );
 
 
