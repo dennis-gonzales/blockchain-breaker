@@ -4,20 +4,19 @@ using Nethereum.ABI.FunctionEncoding;
 using Nethereum.Util;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
-using System.Numerics;
 using UnityEngine;
 
 namespace Blockchain.Request
 {
-    public class SetScoreRequest : MonoBehaviour
+    public class AddPlayerRequest : MonoBehaviour
     {
         private void Start()
         {
-            SetScore();
+            AddPlayer();
         }
-        public async void SetScore()
+        public async void AddPlayer()
         {
-            Debug.Log("SetScore()");
+            Debug.Log("AddPlayer()");
 
             var account = new Account(Environment.Account2PK);
             var web3 = new Web3(account, Environment.InfuraKey);
@@ -25,10 +24,7 @@ namespace Blockchain.Request
             try {
                 var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
-                    new SetScoreFunction()
-                    {
-                        NewScore = BigInteger.Parse("0")
-                    }
+                    new AddPlayerFunction()
                 );
 
                 Debug.Log(receipt.Logs);
