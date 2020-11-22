@@ -4,10 +4,10 @@ using Nethereum.Contracts;
 
 namespace Ethereum.Wrapper
 {
-    [Function("setScore")]
+    [Function("setPlayerScore")]
     public class SetScoreFunction : FunctionMessage
     {
-        [Parameter("uint256", "_newScore", 1)]
+        [Parameter("uint256", "_newScore")]
         public virtual BigInteger NewScore { get; set; }
     }
 }

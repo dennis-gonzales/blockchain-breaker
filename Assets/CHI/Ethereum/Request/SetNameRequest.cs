@@ -9,15 +9,15 @@ using UnityEngine;
 
 namespace Blockchain.Request
 {
-    public class SetScoreRequest : MonoBehaviour
+    public class SetNameRequest : MonoBehaviour
     {
         private void Start()
         {
-            SetScore();
+            SetName();
         }
-        public async void SetScore()
+        public async void SetName()
         {
-            Debug.Log("SetScore()");
+            Debug.Log("SetName()");
 
             var account = new Account(Environment.Account2PK);
             var web3 = new Web3(account, Environment.InfuraKey);
@@ -25,23 +25,10 @@ namespace Blockchain.Request
             try {
                 var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
-                    new SetScoreFunction() {
-                        NewScore = BigInteger.Parse("100")
+                    new SetNameFunction() {
+                        NewName = "Dennis"
                     }
                 );
-
-                if (receipt.Logs.HasValues) {
-                    var highScoreAchievedEvent = contractHandler.GetEvent<HighScoreAchievedEventDTO>();
-                    var eventOutputs = highScoreAchievedEvent.DecodeAllEventsForEvent(receipt.Logs);
-                    var playerHighScore = eventOutputs[0].Event.NewHighScore;
-                    var playerAddress = eventOutputs[0].Event.Player;
-
-                    Debug.Log(playerHighScore);
-                    Debug.Log(playerAddress);
-                }
-
-                Debug.Log(receipt.Logs);
-                
 
                 if (receipt.TransactionHash.IsNotAnEmptyAddress()) {
                     Debug.Log("Successful");

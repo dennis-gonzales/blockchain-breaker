@@ -24,7 +24,9 @@ namespace Blockchain.Request
             try {
                 var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
-                    new AddPlayerFunction()
+                    new AddPlayerFunction() {
+                        PlayerName = "CHI"
+                    }
                 );
 
                 Debug.Log(receipt.Logs);

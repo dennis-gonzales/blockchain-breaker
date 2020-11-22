@@ -4,7 +4,6 @@ using Nethereum.Contracts;
 
 namespace Ethereum.Wrapper
 {
-
     [Function("getPlayerData", typeof(GetPlayerDataOutputDTO))]
     public class GetPlayerDataFunction : FunctionMessage
     {
