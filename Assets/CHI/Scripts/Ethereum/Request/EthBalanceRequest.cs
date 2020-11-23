@@ -15,8 +15,8 @@ namespace Blockchain.Request
         {
             Debug.Log("GetEthBalance()");
 
-            var web3 = new Web3(Environment.InfuraKey);
-            var balance = await web3.Eth.GetBalance.SendRequestAsync(Environment.Account2);
+            var web3 = new Web3(Env.InfuraKey);
+            var balance = await web3.Eth.GetBalance.SendRequestAsync(Env.Account2);
 
             Debug.Log("Balance: " + Web3.Convert.FromWei(balance.Value));
         }

@@ -60,5 +60,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-
 # CHI GONZALES
+bin/Contract/BlockchainBreaker.json
+bin/Contract/BlockchainBreaker-solc-output.json

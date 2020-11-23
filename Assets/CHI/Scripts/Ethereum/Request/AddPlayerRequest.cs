@@ -1,34 +1,38 @@
-﻿using Ethereum;
+﻿using System;
+using Ethereum;
 using Ethereum.Wrapper;
 using Nethereum.ABI.FunctionEncoding;
 using Nethereum.Util;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
-using System.Numerics;
 using UnityEngine;
 
 namespace Blockchain.Request
 {
-    public class SetNameRequest : MonoBehaviour
+    public class AddPlayerRequest : MonoBehaviour
     {
         private void Start()
         {
-            SetName();
+            AddPlayer();
         }
-        public async void SetName()
+        public async void AddPlayer()
         {
-            Debug.Log("SetName()");
+            Debug.Log("AddPlayer()");
 
-            var account = new Account(Environment.Account2PK);
-            var web3 = new Web3(account, Environment.InfuraKey);
+            var account = new Account(Env.Account2PK);
+            var web3 = new Web3(account, Env.InfuraKey);
             
             try {
-                var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
+                var contractHandler = web3.Eth.GetContractHandler(Env.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
-                    new SetNameFunction() {
-                        NewName = "Dennis"
+                    new AddPlayerFunction() {
+                        PlayerName = "CHI"
                     }
                 );
+
+                Debug.Log(receipt.Logs);
+                Debug.Log(receipt.Status);
+                Debug.Log(receipt.TransactionHash);
 
                 if (receipt.TransactionHash.IsNotAnEmptyAddress()) {
                     Debug.Log("Successful");
@@ -38,7 +42,7 @@ namespace Blockchain.Request
             {
                 Debug.Log(e.Message);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Debug.Log(e.Message);
             }

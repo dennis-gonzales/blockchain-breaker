@@ -1,6 +1,6 @@
 ﻿namespace Ethereum
 {
-    public static class Environment
+    public static class Env
     {
         public static string InfuraKey = "https://rinkeby.infura.io/v3/cbf7631207054eb6a345dfdf5c21c9f5";
 

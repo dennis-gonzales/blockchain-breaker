@@ -4,6 +4,7 @@ using Nethereum.ABI.FunctionEncoding;
 using Nethereum.Util;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
+using System;
 using System.Numerics;
 using UnityEngine;
 
@@ -19,11 +20,11 @@ namespace Blockchain.Request
         {
             Debug.Log("SetScore()");
 
-            var account = new Account(Environment.Account2PK);
-            var web3 = new Web3(account, Environment.InfuraKey);
+            var account = new Account(Env.Account2PK);
+            var web3 = new Web3(account, Env.InfuraKey);
             
             try {
-                var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
+                var contractHandler = web3.Eth.GetContractHandler(Env.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
                     new SetScoreFunction() {
                         NewScore = BigInteger.Parse("100")
@@ -51,7 +52,7 @@ namespace Blockchain.Request
             {
                 Debug.Log(e.Message);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 Debug.Log(e.Message);
             }

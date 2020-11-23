@@ -17,9 +17,9 @@ namespace Blockchain.Request
         {
             Debug.Log("GetUsers()");
 
-            var account = new Account(Environment.Account2PK);
-            var web3 = new Web3(account, Environment.InfuraKey);
-            var contractHandler = web3.Eth.GetContractHandler(Environment.contractAddress);
+            var account = new Account(Env.Account2PK);
+            var web3 = new Web3(account, Env.InfuraKey);
+            var contractHandler = web3.Eth.GetContractHandler(Env.contractAddress);
 
             var totalUsersOutput = await contractHandler.QueryDeserializingToObjectAsync<GetTotalUsersFunction, GetTotalUsersOutputDTO>(
                 new GetTotalUsersFunction()
