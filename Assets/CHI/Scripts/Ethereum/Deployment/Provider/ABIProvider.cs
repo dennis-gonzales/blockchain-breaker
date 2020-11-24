@@ -1,14 +1,17 @@
 using System.IO;
 
-static class ABIProvider
+namespace Ethereum.Deployment.Deployer.Provider
 {
-    public static string Read()
+    static class ABIProvider
     {
-        string abiPath = "bin/Contract/BlockchainBreaker.abi";
-    
-        using (StreamReader reader = new StreamReader(abiPath))
+        public static string Read()
         {
-            return reader.ReadToEnd();
+            string abiPath = "bin/Contract/BlockchainBreaker.abi";
+
+            using (StreamReader reader = new StreamReader(abiPath))
+            {
+                return reader.ReadToEnd();
+            }
         }
     }
 }

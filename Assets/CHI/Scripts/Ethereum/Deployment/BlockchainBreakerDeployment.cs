@@ -1,9 +1,13 @@
+using Ethereum.Deployment.Deployer.Provider;
 using Nethereum.Contracts;
 
-public class BlockchainBreakerDeployment : ContractDeploymentMessage
+namespace Ethereum.Deployment
 {
-    public BlockchainBreakerDeployment() : base(BytecodeProvider.Read())
+    public class BlockchainBreakerDeployment : ContractDeploymentMessage
     {
-        
+        public BlockchainBreakerDeployment() : base(BytecodeProvider.Read())
+        {
+
+        }
     }
 }

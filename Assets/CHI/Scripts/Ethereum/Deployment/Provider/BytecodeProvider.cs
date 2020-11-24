@@ -1,14 +1,17 @@
 using System.IO;
 
-static class BytecodeProvider
+namespace Ethereum.Deployment.Deployer.Provider
 {
-    public static string Read()
+    static class BytecodeProvider
     {
-        string bytecodePath = "bin/Contract/BlockchainBreaker.bin";
-    
-        using (StreamReader reader = new StreamReader(bytecodePath))
+        public static string Read()
         {
-            return reader.ReadToEnd();
+            string bytecodePath = "bin/Contract/BlockchainBreaker.bin";
+
+            using (StreamReader reader = new StreamReader(bytecodePath))
+            {
+                return reader.ReadToEnd();
+            }
         }
     }
 }

@@ -1,18 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Ethereum.Deployment.Deployer;
 using UnityEngine;
 
-public class ContractManager : MonoBehaviour
+namespace Ethereum.Manager
 {
-    private void Start()
+    public class ContractManager : MonoBehaviour
     {
-        var deployer = GetComponent<IDeployable>();
+        private void Start()
+        {
+            var deployer = GetComponent<IDeployable>();
 
-        if (deployer is IDeployable) {
-            Debug.Log("Deploying...");
-            deployer.Deploy();
-        } else {
-            Debug.LogWarning("Error deploying contract...");
+            if (deployer is IDeployable)
+            {
+                Debug.Log("Deploying...");
+                deployer.Deploy();
+            }
+            else
+            {
+                Debug.LogWarning("Error deploying contract...");
+            }
         }
     }
+
 }

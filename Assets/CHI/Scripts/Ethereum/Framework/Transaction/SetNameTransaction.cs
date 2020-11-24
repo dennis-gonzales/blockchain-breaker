@@ -1,29 +1,22 @@
-﻿using Ethereum;
-using Ethereum.Wrapper;
+﻿using Ethereum.Wrapper;
 using Nethereum.ABI.FunctionEncoding;
 using Nethereum.Util;
-using Nethereum.Web3;
-using Nethereum.Web3.Accounts;
 using System;
 using UnityEngine;
 
-namespace Blockchain.Request
+namespace Ethereum.Framework.Transaction
 {
-    public class SetNameRequest : MonoBehaviour
+    public class SetNameTransaction : RequestAPI, ITransactable
     {
         private void Start()
         {
-            SetName();
+            Transact();
         }
-        public async void SetName()
+        public async void Transact()
         {
-            Debug.Log("SetName()");
-
-            var account = new Account(Env.Account2PK);
-            var web3 = new Web3(account, Env.InfuraKey);
+            Debug.Log("Setting the name...");
             
             try {
-                var contractHandler = web3.Eth.GetContractHandler(Env.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
                     new SetNameFunction() {
                         NewName = "Dennis"

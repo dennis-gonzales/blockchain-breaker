@@ -1,6 +1,9 @@
 ﻿using System;
 
-public interface IDeployable
+namespace Ethereum.Deployment.Deployer
 {
-    void Deploy();
+    public interface IDeployable
+    {
+        void Deploy();
+    }
 }

@@ -1,30 +1,23 @@
-﻿using Ethereum;
-using Ethereum.Wrapper;
+﻿using Ethereum.Wrapper;
 using Nethereum.ABI.FunctionEncoding;
 using Nethereum.Util;
-using Nethereum.Web3;
-using Nethereum.Web3.Accounts;
 using System;
 using System.Numerics;
 using UnityEngine;
 
-namespace Blockchain.Request
+namespace Ethereum.Framework.Transaction
 {
-    public class SetScoreRequest : MonoBehaviour
+    public class SetScoreTransaction : RequestAPI, ITransactable
     {
         private void Start()
         {
-            SetScore();
+            Transact();
         }
-        public async void SetScore()
+        public async void Transact()
         {
-            Debug.Log("SetScore()");
-
-            var account = new Account(Env.Account2PK);
-            var web3 = new Web3(account, Env.InfuraKey);
+            Debug.Log("Setting the score...");
             
             try {
-                var contractHandler = web3.Eth.GetContractHandler(Env.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
                     new SetScoreFunction() {
                         NewScore = BigInteger.Parse("100")

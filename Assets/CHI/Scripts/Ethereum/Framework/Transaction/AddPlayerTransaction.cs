@@ -1,29 +1,22 @@
 ﻿using System;
-using Ethereum;
 using Ethereum.Wrapper;
 using Nethereum.ABI.FunctionEncoding;
 using Nethereum.Util;
-using Nethereum.Web3;
-using Nethereum.Web3.Accounts;
 using UnityEngine;
 
-namespace Blockchain.Request
+namespace Ethereum.Framework.Transaction
 {
-    public class AddPlayerRequest : MonoBehaviour
+    public class AddPlayerTransaction : RequestAPI, ITransactable
     {
         private void Start()
         {
-            AddPlayer();
+            Transact();
         }
-        public async void AddPlayer()
+        public async void Transact()
         {
-            Debug.Log("AddPlayer()");
-
-            var account = new Account(Env.Account2PK);
-            var web3 = new Web3(account, Env.InfuraKey);
+            Debug.Log("Adding player...");
             
             try {
-                var contractHandler = web3.Eth.GetContractHandler(Env.contractAddress);
                 var receipt = await contractHandler.SendRequestAndWaitForReceiptAsync(
                     new AddPlayerFunction() {
                         PlayerName = "CHI"
