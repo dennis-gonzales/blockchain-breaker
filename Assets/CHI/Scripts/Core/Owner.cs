@@ -7,11 +7,11 @@ namespace Core
     {
         private async void Start()
         {
-            string owner = await Chitereum
+            var owner = await Chitereum
                 .instance
                 .CallDataSource
                 .Owner();
-            Debug.Log("OWNER ADDRESS:" + owner);
+            Debug.Log("OWNER ADDRESS:" + owner.Owner);
         }
     }
 }

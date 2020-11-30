@@ -7,11 +7,11 @@ namespace Core
     {
         private async void Start()
         {
-            string highestScorer = await Chitereum
+            var highestScorer = await Chitereum
                 .instance
                 .CallDataSource
                 .HighestScorer();
-            Debug.Log("HIGHEST SCORER:" + highestScorer);
+            Debug.Log("HIGHEST SCORER:" + highestScorer.PlayerAddress);
         }
     }
 }

@@ -1,14 +1,14 @@
-﻿using Ethereum.RPC.Wrapper;
+﻿using Ethereum.RPC.Call.Wrapper;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Ethereum.RPC.Call.UseCase
 {
-    public class PlayerDataCall : Base, ICallable<string>
+    public class PlayerDataCall : Base, ICallable<GetPlayerDataOutputDTO>
     {
 
-        public async Task<string> Call()
+        public async Task<GetPlayerDataOutputDTO> Call()
         {
             Debug.Log("Calling player data...");
 
@@ -18,15 +18,12 @@ namespace Ethereum.RPC.Call.UseCase
                     new GetPlayerDataFunction()
                 );
 
-                Debug.Log(playerDataOutput);
-                Debug.Log(playerDataOutput.Name);
-
-                return playerDataOutput.Name;
+                return playerDataOutput;
             }
             catch (Exception e)
             {
                 Debug.Log(e.Message);
-                return e.Message;
+                return null;
             }
         }
     }

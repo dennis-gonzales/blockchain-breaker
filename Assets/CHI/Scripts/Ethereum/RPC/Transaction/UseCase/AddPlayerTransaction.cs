@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Ethereum.RPC.Wrapper;
+using Ethereum.RPC.Transaction.Wrapper;
 using Nethereum.Util;
 using UnityEngine;
 

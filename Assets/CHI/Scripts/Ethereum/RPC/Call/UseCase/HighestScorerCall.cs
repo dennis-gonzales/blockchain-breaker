@@ -1,13 +1,13 @@
-﻿using Ethereum.RPC.Wrapper;
+﻿using Ethereum.RPC.Call.Wrapper;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Ethereum.RPC.Call.UseCase
 {
-    public class HighestScorerCall : Base, ICallable<string>
+    public class HighestScorerCall : Base, ICallable<GetHighestScorerOutputDTO>
     {
-        public async Task<string> Call()
+        public async Task<GetHighestScorerOutputDTO> Call()
         {
             Debug.Log("Calling highscorer...");
 
@@ -18,12 +18,12 @@ namespace Ethereum.RPC.Call.UseCase
             );
 
                 Debug.Log(highestScorerOutput);
-                return highestScorerOutput.PlayerAddress;
+                return highestScorerOutput;
             }
             catch (Exception e)
             {
                 Debug.Log(e.Message);
-                return e.Message;
+                return null;
             }
         }
     }

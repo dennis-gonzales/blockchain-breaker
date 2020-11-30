@@ -1,24 +1,20 @@
 ﻿using System;
-using Ethereum.RPC.Wrapper;
-using Nethereum.ABI.FunctionEncoding;
-using Nethereum.Web3;
-using Nethereum.Web3.Accounts;
+using System.Threading.Tasks;
+using Ethereum.RPC.Call.Wrapper;
+using Ethereum.RPC.Deployment.Wrapper;
 using UnityEngine;
 
 namespace Ethereum.RPC.Deployment.Deployer
 {
-    public class Web3ContractDeployer : MonoBehaviour, IDeployable
+    public class Web3ContractDeployer : Base, IDeployable<Response>
     {
-        public async void Deploy()
+        public async Task<Response> Deploy()
         {
-            var account = new Account(Env.Account2PK);
-            var web3 = new Web3(account, Env.InfuraKey);
-
             try
             {
-                var deploymentHandler = web3.Eth.GetContractDeploymentHandler<ContractDeployment>();
+                var deploymentHandler = web3.Eth.GetContractDeploymentHandler<ContractDeploymentWrapper>();
                 var deploymentReceipt = await deploymentHandler.SendRequestAndWaitForReceiptAsync(
-                    new ContractDeployment()
+                    new ContractDeploymentWrapper()
                 );
 
                 var contractAddress = deploymentReceipt.ContractAddress;
@@ -31,14 +27,13 @@ namespace Ethereum.RPC.Deployment.Deployer
 
                 Debug.Log(ownerOutput);
 
-            }
-            catch (SmartContractRevertException e)
-            {
-                Debug.Log(e);
+                return new Response(succeeded: true);
+
             }
             catch (Exception e)
             {
                 Debug.Log(e);
+                return new Response(exception: e);
             }
         }
     }

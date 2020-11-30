@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Ethereum.RPC.Call.Wrapper;
+using System.Numerics;
 using UnityEngine;
 
 namespace Core.Model
@@ -14,6 +14,12 @@ namespace Core.Model
         public string ethereumAddress;
 
         [SerializeField]
-        public int highScore;
+        public BigInteger highScore;
+
+        public void ToPlayer(GetPlayerDataOutputDTO playerData)
+        {
+            name = playerData.Name;
+            highScore = playerData.HighScore;
+        }
     }
 }

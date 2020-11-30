@@ -1,13 +1,13 @@
-﻿using Ethereum.RPC.Wrapper;
+﻿using Ethereum.RPC.Call.Wrapper;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Ethereum.RPC.Call.UseCase
 {
-    public class TotalUsersCall : Base, ICallable<int>
+    public class TotalUsersCall : Base, ICallable<GetTotalUsersOutputDTO>
     {
-        public async Task<int> Call()
+        public async Task<GetTotalUsersOutputDTO> Call()
         {
             Debug.Log("Calling users...");
 
@@ -17,11 +17,10 @@ namespace Ethereum.RPC.Call.UseCase
                     new GetTotalUsersFunction()
                 );
 
-                Debug.Log(totalUsersOutput);
-                return (int)totalUsersOutput.TotalUsers;
+                return totalUsersOutput;
             } catch (Exception e) {
                 Debug.Log(e.Message);
-                return 0;
+                return null;
             }
         }
     }

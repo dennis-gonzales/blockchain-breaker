@@ -1,5 +1,5 @@
 {
-    "name": "Core",
+    "name": "Assembly-Core",
     "references": [
         "GUID:b7b7c3dc47162264ca3f43ec0f96e5de"
     ],

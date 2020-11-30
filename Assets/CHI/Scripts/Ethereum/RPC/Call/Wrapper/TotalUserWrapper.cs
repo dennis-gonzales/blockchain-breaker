@@ -2,7 +2,7 @@
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 
-namespace Ethereum.RPC.Wrapper
+namespace Ethereum.RPC.Call.Wrapper
 {
     [Function("totalUsers", typeof(GetTotalUsersOutputDTO))]
     public class GetTotalUsersFunction : FunctionMessage

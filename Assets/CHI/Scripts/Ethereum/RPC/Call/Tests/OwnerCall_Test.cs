@@ -1,4 +1,4 @@
-﻿using Ethereum.RPC.Wrapper;
+﻿using Ethereum.RPC.Call.Wrapper;
 using Nethereum.Contracts.ContractHandlers;
 using Nethereum.Util;
 using Nethereum.Web3;

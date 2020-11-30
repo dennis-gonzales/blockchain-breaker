@@ -1,7 +1,7 @@
 ﻿using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 
-namespace Ethereum.RPC.Wrapper
+namespace Ethereum.RPC.Call.Wrapper
 {
     [Function("owner", typeof(GetOwnerOutputDTO))]
     public class GetOwnerFunction : FunctionMessage

@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using Ethereum.RPC.Call.Wrapper;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Ethereum.RPC.Call
@@ -6,9 +7,9 @@ namespace Ethereum.RPC.Call
     public interface CallDataSource
     {
         Task<BigInteger> EthBalance();
-        Task<string> HighestScorer();
-        Task<string> Owner();
-        Task<string> PlayerData();
-        Task<int> TotalUsers();
+        Task<GetHighestScorerOutputDTO> HighestScorer();
+        Task<GetOwnerOutputDTO> Owner();
+        Task<GetPlayerDataOutputDTO> PlayerData();
+        Task<GetTotalUsersOutputDTO> TotalUsers();
     }
 }

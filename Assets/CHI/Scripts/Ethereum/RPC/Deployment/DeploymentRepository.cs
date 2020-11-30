@@ -1,9 +1,18 @@
-﻿using System;
+﻿using Ethereum.RPC.Deployment.Deployer;
+using System;
+using System.Threading.Tasks;
 
 namespace Ethereum.RPC.Deployment
 {
-    public class DeploymentRepository
+    public class DeploymentRepository : DeploymentDataSource
     {
-        // TODO: refactor ContractDeployment
+        private readonly Web3ContractDeployer web3Contract;
+
+        public DeploymentRepository()
+        {
+            web3Contract = new Web3ContractDeployer();
+        }
+
+        public Task<Response> Web3Contract() => web3Contract.Deploy();
     }
 }

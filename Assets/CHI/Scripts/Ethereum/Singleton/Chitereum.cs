@@ -1,4 +1,5 @@
 ﻿using Ethereum.RPC.Call;
+using Ethereum.RPC.Deployment;
 using Ethereum.RPC.Transaction;
 using UnityEngine;
 
@@ -35,11 +36,13 @@ namespace Ethereum.Singleton
             else
             {
                 DontDestroyOnLoad(this);
+                DeploymentDataSource = new DeploymentRepository();
                 CallDataSource = new CallRepository();
                 TransactionDataSource = new TransactionRepository();
             }
         }
 
+        public DeploymentDataSource DeploymentDataSource { get; private set; }
         public CallDataSource CallDataSource { get; private set; }
         public TransactionDataSource TransactionDataSource { get; private set; }
     }

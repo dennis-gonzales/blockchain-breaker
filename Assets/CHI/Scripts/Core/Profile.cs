@@ -7,14 +7,19 @@ namespace Core
     public class Profile : MonoBehaviour
     {
 
-        private Player player;
+        private readonly Player player = new Player();
 
-        private void Start()
+        private async void Start()
         {
-            Chitereum
+            var playerData = await Chitereum
                 .instance
                 .CallDataSource
                 .PlayerData();
+
+            player.ToPlayer(playerData);
+
+            Debug.Log(player.name);
+            Debug.Log(player.highScore);
         }
     }
 }

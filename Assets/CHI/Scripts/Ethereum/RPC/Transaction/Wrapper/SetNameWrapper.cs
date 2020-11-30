@@ -2,7 +2,7 @@
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 
-namespace Ethereum.RPC.Wrapper
+namespace Ethereum.RPC.Transaction.Wrapper
 {
     [Function("setPlayerName")]
     public class SetNameFunction : FunctionMessage

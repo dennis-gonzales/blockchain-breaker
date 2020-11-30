@@ -2,7 +2,7 @@
 using Nethereum.ABI.FunctionEncoding.Attributes;
 using Nethereum.Contracts;
 
-namespace Ethereum.RPC.Wrapper
+namespace Ethereum.RPC.Call.Wrapper
 {
     [Function("getPlayerData", typeof(GetPlayerDataOutputDTO))]
     public class GetPlayerDataFunction : FunctionMessage

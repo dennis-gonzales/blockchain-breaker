@@ -1,4 +1,5 @@
 ﻿using Ethereum.RPC.Call.UseCase;
+using Ethereum.RPC.Call.Wrapper;
 using System.Numerics;
 using System.Threading.Tasks;
 
@@ -6,11 +7,11 @@ namespace Ethereum.RPC.Call
 {
     public class CallRepository : CallDataSource
     {
-        private EthBalanceCall ethBalance;
-        private HighestScorerCall highestScorer;
-        private OwnerCall owner;
-        private PlayerDataCall playerData;
-        private TotalUsersCall totalUsers;
+        private readonly EthBalanceCall ethBalance;
+        private readonly HighestScorerCall highestScorer;
+        private readonly OwnerCall owner;
+        private readonly PlayerDataCall playerData;
+        private readonly TotalUsersCall totalUsers;
 
         public CallRepository()
         {
@@ -23,12 +24,12 @@ namespace Ethereum.RPC.Call
 
         public Task<BigInteger> EthBalance() => ethBalance.Call();
 
-        public Task<string> HighestScorer() => highestScorer.Call();
+        public Task<GetHighestScorerOutputDTO> HighestScorer() => highestScorer.Call();
 
-        public Task<string> Owner() => owner.Call();
+        public Task<GetOwnerOutputDTO> Owner() => owner.Call();
 
-        public Task<string> PlayerData() => playerData.Call();
+        public Task<GetPlayerDataOutputDTO> PlayerData() => playerData.Call();
 
-        public Task<int> TotalUsers() => totalUsers.Call();
+        public Task<GetTotalUsersOutputDTO> TotalUsers() => totalUsers.Call();
     }
 }

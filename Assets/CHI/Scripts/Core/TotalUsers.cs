@@ -7,11 +7,11 @@ namespace Core
     {
         private async void Start()
         {
-            int totalUsers = await Chitereum
+            var totalUsers = await Chitereum
                 .instance
                 .CallDataSource
                 .TotalUsers();
-            Debug.Log("TOTAL USERS:" + totalUsers);
+            Debug.Log("TOTAL USERS:" + totalUsers.TotalUsers);
         }
     }
 }
