@@ -6,21 +6,21 @@ namespace Ethereum.RPC.Transaction
 {
     public class TransactionRepository : TransactionDataSource
     {
-        private readonly AddPlayerTransaction addPlayer;
-        private readonly SetNameTransaction setName;
-        private readonly SetScoreTransaction setScore;
+        private readonly Lazy<AddPlayerTransaction> addPlayer;
+        private readonly Lazy<SetNameTransaction> setName;
+        private readonly Lazy<SetScoreTransaction> setScore;
 
         public TransactionRepository()
         {
-            addPlayer = new AddPlayerTransaction();
-            setName = new SetNameTransaction();
-            setScore = new SetScoreTransaction();
+            addPlayer = new Lazy<AddPlayerTransaction>();
+            setName = new Lazy<SetNameTransaction>();
+            setScore = new Lazy<SetScoreTransaction>();
         }
 
-        public Task<Response> AddPlayer() => addPlayer.Transact();
+        public Task<Response> AddPlayer() => addPlayer.Value.Transact();
 
-        public Task<Response> SetName() => setName.Transact();
+        public Task<Response> SetName() => setName.Value.Transact();
 
-        public Task<Response> SetScore() => setScore.Transact();
+        public Task<Response> SetScore() => setScore.Value.Transact();
     }
 }

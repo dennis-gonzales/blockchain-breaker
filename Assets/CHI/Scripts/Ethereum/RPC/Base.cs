@@ -1,6 +1,7 @@
 ﻿using Nethereum.Contracts.ContractHandlers;
 using Nethereum.Web3;
 using Nethereum.Web3.Accounts;
+using UnityEngine;
 
 namespace Ethereum.RPC
 {
@@ -13,6 +14,7 @@ namespace Ethereum.RPC
         public Base()
         {
             // TODO: check build config to adapt usages
+            Debug.Log("Base");
         }
     }
 }

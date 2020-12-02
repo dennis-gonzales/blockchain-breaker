@@ -6,13 +6,13 @@ namespace Ethereum.RPC.Deployment
 {
     public class DeploymentRepository : DeploymentDataSource
     {
-        private readonly Web3ContractDeployer web3Contract;
+        private readonly Lazy<Web3ContractDeployer> web3Contract;
 
         public DeploymentRepository()
         {
-            web3Contract = new Web3ContractDeployer();
+            web3Contract = new Lazy<Web3ContractDeployer>();
         }
 
-        public Task<Response> Web3Contract() => web3Contract.Deploy();
+        public Task<Response> Web3Contract() => web3Contract.Value.Deploy();
     }
 }
