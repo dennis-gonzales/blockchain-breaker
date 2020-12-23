@@ -1,0 +1,29 @@
+{
+  "name": "blockchain-breaker",
+  "version": "1.0.0",
+  "description": "A blockchain game app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennis-gonzales/blockchain-breaker.git"
+  },
+  "keywords": [
+    "Ethereum",
+	"Blockchain"
+  ],
+  "author": "Gonzales, Dennis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dennis-gonzales/blockchain-breaker/issues"
+  },
+  "homepage": "https://github.com/dennis-gonzales/blockchain-breaker#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.3.0"
+  }
+}
